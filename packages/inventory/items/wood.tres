@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://bo4qxoaq53opy"]
+
+[ext_resource type="Texture2D" uid="uid://oxowsvr8bkv" path="res://arts/lowpoly_nature_pack/branch.png" id="1_rh28u"]
+[ext_resource type="Script" path="res://addons/inventory-system/core/inventory_item.gd" id="2_krvch"]
+
+[resource]
+script = ExtResource("2_krvch")
+id = 0
+can_stack = true
+max_stack = 16
+name = "wood"
+icon = ExtResource("1_rh28u")
+weight = 0.0
+properties = {
+"dropped_item": "res://packages/inventory/dropped_items/Wood.tscn"
+}
+dynamic_properties = Array[String]([])
+categories = Array[Resource("res://addons/inventory-system/core/item_category.gd")]([])

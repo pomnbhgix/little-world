@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="InventoryDatabase" load_steps=3 format=3 uid="uid://bebhg07krf53f"]
+
+[ext_resource type="Resource" uid="uid://bo4qxoaq53opy" path="res://packages/inventory/items/wood.tres" id="1_4ps82"]
+[ext_resource type="Script" path="res://addons/inventory-system/core/inventory_database.gd" id="1_u1w6i"]
+
+[resource]
+script = ExtResource("1_u1w6i")
+items = Array[Resource("res://addons/inventory-system/core/inventory_item.gd")]([ExtResource("1_4ps82")])
+recipes = Array[Resource("res://addons/inventory-system/craft/recipe.gd")]([])
+stations_type = Array[Resource("res://addons/inventory-system/craft/craft_station_type.gd")]([])
+item_categories = Array[Resource("res://addons/inventory-system/core/item_category.gd")]([])

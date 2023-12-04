@@ -1,0 +1,45 @@
+[gd_scene load_steps=11 format=3 uid="uid://dteoexdltf8j"]
+
+[ext_resource type="Script" path="res://addons/inventory-system/core/dropped_item_3d.gd" id="1_pa7j0"]
+[ext_resource type="Resource" uid="uid://bo4qxoaq53opy" path="res://packages/inventory/items/wood.tres" id="2_0v4ay"]
+[ext_resource type="Script" path="res://addons/inventory-system/core/slot_item.gd" id="2_2k0fn"]
+[ext_resource type="PackedScene" uid="uid://b18a4e60iwuov" path="res://arts/lowpoly_nature_pack/Branch_01.fbx" id="2_3wy37"]
+[ext_resource type="Script" path="res://addons/inventory-system/interact/interact_action.gd" id="2_ren8t"]
+[ext_resource type="Texture2D" uid="uid://d0v3d4wtrko4i" path="res://arts/lowpoly_nature_pack/NaturePackLite_Texture_01.png" id="3_ro71p"]
+
+[sub_resource type="Resource" id="Resource_iwnum"]
+script = ExtResource("2_2k0fn")
+definition = ExtResource("2_0v4ay")
+properties = {}
+
+[sub_resource type="Resource" id="Resource_7m7np"]
+script = ExtResource("2_ren8t")
+input = "interact"
+description = "to Interact"
+code = 0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_030o0"]
+size = Vector3(0.837646, 0.12941, 0.145874)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6akgy"]
+albedo_texture = ExtResource("3_ro71p")
+
+[node name="Wood" type="RigidBody3D"]
+gravity_scale = 0.0
+script = ExtResource("1_pa7j0")
+item = SubResource("Resource_iwnum")
+actions = Array[ExtResource("2_ren8t")]([SubResource("Resource_7m7np")])
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00354004, 0.0625992, -0.0055542)
+shape = SubResource("BoxShape3D_030o0")
+
+[node name="Models" type="Node3D" parent="."]
+
+[node name="Root Scene" parent="Models" instance=ExtResource("2_3wy37")]
+
+[node name="Branch_01" parent="Models/Root Scene/RootNode" index="0"]
+transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0.0527197, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_6akgy")
+
+[editable path="Models/Root Scene"]

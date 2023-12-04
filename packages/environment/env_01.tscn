@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://blguan87ifqle"]
+
+[ext_resource type="PackedScene" uid="uid://buy1fubvg3xkb" path="res://arts/LowPoly Environment Pack/Mounting_1.fbx" id="1_rpcai"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_kt6be"]
+size = Vector2(50, 50)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_suak5"]
+data = PackedVector3Array(25, 0, 25, -25, 0, 25, 25, 0, -25, -25, 0, 25, -25, 0, -25, 25, 0, -25)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qb0vc"]
+albedo_color = Color(0.192157, 0.470588, 0.184314, 1)
+
+[node name="Env01" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_kt6be")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_suak5")
+
+[node name="Root Scene" parent="." instance=ExtResource("1_rpcai")]
+
+[node name="Mounting_1" parent="Root Scene/RootNode" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_qb0vc")
+
+[editable path="Root Scene"]

@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://cr7dkqephmmen"]
+
+[ext_resource type="PackedScene" uid="uid://blguan87ifqle" path="res://packages/environment/env_01.tscn" id="1_rvwrk"]
+[ext_resource type="PackedScene" uid="uid://7b00mkmg5q4r" path="res://packages/environment/light_and_sky.tscn" id="2_vvdtx"]
+[ext_resource type="PackedScene" uid="uid://dteoexdltf8j" path="res://packages/inventory/dropped_items/wood.tscn" id="3_3fw37"]
+[ext_resource type="PackedScene" uid="uid://c5t77cc7gnksi" path="res://packages/characters/first_person_player.tscn" id="4_dauui"]
+
+[node name="HideAndSeek" type="Node"]
+
+[node name="LightAndSky" parent="." instance=ExtResource("2_vvdtx")]
+
+[node name="Env01" parent="." instance=ExtResource("1_rvwrk")]
+
+[node name="Wood" parent="." instance=ExtResource("3_3fw37")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 11.175)
+
+[node name="FirstPersonPlayer" parent="." instance=ExtResource("4_dauui")]
