@@ -15,8 +15,8 @@ func _ready():
 ## === OVERRIDE MAIN COMMANDS ===
 ## Override all main commands for the client to send to the server through rpc
 
-func drop(item : SlotItem, amount := 1) -> bool:
-	var item_id = item.definition.id
+func drop(item : InventoryItem, amount := 1) -> bool:
+	var item_id = item.id
 	if item_id < InventoryItem.NONE:
 		return false
 	if not multiplayer.is_server():
@@ -107,11 +107,9 @@ func transaction_to(inventory : Inventory):
 func drop_rpc(item_id : int, amount : int):
 	if not multiplayer.is_server():
 		return
-	var definition = get_item_from_id(item_id)
-	if definition == null:
+	var item = get_item_from_id(item_id)
+	if item == null:
 		return
-	var item = SlotItem.new()
-	item.definition = definition
 	super.drop(item, amount)
 
 
@@ -119,11 +117,9 @@ func drop_rpc(item_id : int, amount : int):
 func add_to_inventory_rpc(object_path : NodePath, item_id : int, amount := 1, drop_excess := false):
 	if not multiplayer.is_server():
 		return
-	var definition = get_item_from_id(item_id)
-	if definition == null:
+	var item = get_item_from_id(item_id)
+	if item == null:
 		return
-	var item = SlotItem.new()
-	item.definition = definition
 	var object = get_node(object_path)
 	if object == null:
 		return
@@ -263,19 +259,19 @@ func close_main_inventory() -> bool:
 	return super.close(inventories[0])
 
 
-func _instantiate_dropped_item(dropped_item : PackedScene, item : SlotItem):
+func _instantiate_dropped_item(dropped_item : PackedScene):
 	var spawner = get_node("../../../DroppedItemSpawner")
 	var obj = spawner.spawn([get_parent().get_parent().position, get_parent().get_parent().rotation, dropped_item.resource_path])
 	dropped.emit(obj)
 
 
-func _on_updated_transaction_slot():
+func _on_updated_transaction_slot(item : InventoryItem, amount : int):
 	var item_id : int
-	if transaction_slot.has_valid():
+	if item == null:
 		item_id = InventoryItem.NONE
 	else:
-		item_id = transaction_slot.item.id
-	_on_updated_transaction_slot_rpc.rpc(item_id, transaction_slot.amount)
+		item_id = item.id
+	_on_updated_transaction_slot_rpc.rpc(item_id, amount)
 
 
 @rpc

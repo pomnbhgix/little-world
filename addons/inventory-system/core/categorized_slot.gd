@@ -24,7 +24,7 @@ func contains_any_category(other_list : Array[ItemCategory]) -> bool:
 	return false
 
 
-func add(item : SlotItem, amount : int = 1):
-	if not is_accept_category(item.definition):
+func add(item : InventoryItem, amount : int):
+	if not is_accept_category(item):
 		return amount
 	return super.add(item, amount)

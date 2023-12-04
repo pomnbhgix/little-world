@@ -29,7 +29,11 @@ signal closed(inventory : Inventory)
 
 ## Emitted when handler transfers slot is updated.
 ## Called when the function [code]set_transaction_slot()[/code] is executed.
-signal updated_transaction_slot
+signal updated_transaction_slot(item : InventoryItem, amount : int)
+
+## Main [Inventory] node path.
+## The main [Inventory] is used in most handler functions as a default inventory.
+@export_node_path("Inventory") var inventory_path := NodePath("Inventory")
 
 ## Path to where a drop of [DroppedItem] should be instantiated by the handler.
 @export_node_path var drop_parent_path := NodePath("../../..")
@@ -57,12 +61,12 @@ var transaction_slot : Slot = Slot.new()
 ## The scene to be instantiated from the item is fetched from the [InventoryDatabase] 
 ## and placed as a child of [code]drop_parent[/code].
 ## For each dropped item a [code]dropped[/code] signal is emitted.
-func drop(item : SlotItem, amount := 1) -> bool:
-	if item.definition.properties.has("dropped_item"):
-		var path = item.definition.properties["dropped_item"]
+func drop(item : InventoryItem, amount := 1) -> bool:
+	if item.properties.has("dropped_item"):
+		var path = item.properties["dropped_item"]
 		var dropped_item = load(path)
 		for i in amount:
-			_instantiate_dropped_item(dropped_item, item)
+			_instantiate_dropped_item(dropped_item)
 		return true
 	else:
 		return false
@@ -70,7 +74,7 @@ func drop(item : SlotItem, amount := 1) -> bool:
 
 ## Add an amount of an [InventoryItem] to a inventory.
 ## If this addition fails and the [code]drop_excess[/code] is true then a drop of the unadded items occurs
-func add_to_inventory(inventory : Inventory, item : SlotItem, amount := 1, drop_excess := false) -> int:
+func add_to_inventory(inventory : Inventory, item : InventoryItem, amount := 1, drop_excess := false) -> int:
 	var value_no_added = inventory.add(item, amount)
 	added.emit(item, amount - value_no_added)
 	if (drop_excess):
@@ -87,9 +91,9 @@ func drop_from_inventory(slot_index : int, amount := 1, inventory := self.invent
 	if inventory.is_empty_slot(slot_index):
 		return
 	var slot = inventory.slots[slot_index]
-	if not slot.has_valid():
+	var item = slot.item
+	if item == null:
 		return
-	var item : SlotItem = slot.item
 	var not_removed = inventory.remove_at(slot_index, item, amount)
 	var removed = amount - not_removed
 	drop(item, removed)
@@ -102,14 +106,14 @@ func pick_to_inventory(dropped_item, inventory := self.inventories[0]):
 		return false
 	if not dropped_item.is_pickable:
 		return false
-	var item : SlotItem = dropped_item.item
-	if item == null or item.definition == null:
-		printerr("item or definition in dropped_item is null!")
+	var item = dropped_item.item
+	if item == null:
+		printerr("item in dropped_item is null!")
 	if add_to_inventory(inventory, item) == 0:
 		picked.emit(dropped_item)
 		dropped_item.queue_free()
-		return true
-	return false
+		return true;
+	return false;
 
 
 ## Exchanges a amount of an [InventoryItem] between inventories.
@@ -117,36 +121,36 @@ func pick_to_inventory(dropped_item, inventory := self.inventories[0]):
 ## if any value is not successfully added, this value is added again to the "from" [Inventory] at the same index,
 ## if in this last task values are not added with successes they will be dropped with [code]drop()[/code]
 func move_between_inventories(from : Inventory, slot_index : int, amount : int, to : Inventory) -> int:
-	var slot = from.slots[slot_index]
-	var item = slot.item
-	var amount_not_removed = from.remove_at(slot_index, item, amount)
-	var amount_for_swap = amount - amount_not_removed
-	var amount_not_swaped = to.add(item, amount_for_swap)
-	var amount_not_undo = from.add_at(slot_index, item, amount_not_swaped)
-#	drop(item, amount_not_undo)
+	var slot = from.slots[slot_index];
+	var item = slot.item;
+	var amount_not_removed = from.remove_at(slot_index, item, amount);
+	var amount_for_swap = amount - amount_not_removed;
+	var amount_not_swaped = to.add(item, amount_for_swap);
+	var amount_not_undo = from.add_at(slot_index, item, amount_not_swaped);
+#	drop(item, amount_not_undo);
 	return amount_not_swaped
 
 
 func move_between_inventories_at(from : Inventory, slot_index : int, amount : int, to : Inventory, to_slot_index : int):
-	var slot = from.slots[slot_index]
-	var item = slot.item.duplicate()
-	var amount_not_removed = from.remove_at(slot_index, item, amount)
-	var amount_for_swap = amount - amount_not_removed
-	var amount_not_swaped = to.add_at(to_slot_index, item, amount_for_swap)
-	var amount_not_undo = from.add_at(slot_index, item, amount_not_swaped)
-#	drop(item, amount_not_undo)
+	var slot = from.slots[slot_index];
+	var item = slot.item;
+	var amount_not_removed = from.remove_at(slot_index, item, amount);
+	var amount_for_swap = amount - amount_not_removed;
+	var amount_not_swaped = to.add_at(to_slot_index, item, amount_for_swap);
+	var amount_not_undo = from.add_at(slot_index, item, amount_not_swaped);
+#	drop(item, amount_not_undo);
 
 
 ## Swap slot information for inventories.
 func swap_between_inventories(inventory : Inventory, slot_index : int, other_inventory : Inventory, other_slot_index : int, amount := 1):
 	if inventory.database != other_inventory.database:
 		return
-	var slot : Slot = inventory.slots[slot_index]
-	var other_slot = other_inventory.slots[other_slot_index]
+	var slot = inventory.slots[slot_index];
+	var other_slot = other_inventory.slots[other_slot_index];
 	# Same Item in slot and other_slot
-	if other_inventory.is_empty_slot(other_slot_index) or slot.item.definition == other_slot.item.definition:
+	if other_inventory.is_empty_slot(other_slot_index) or slot.item == other_slot.item:
 		var item = slot.item
-		if item == null or item.definition == null:
+		if item == null:
 			return
 		var for_trade = 0
 		if other_inventory.is_empty_slot(other_slot_index):
@@ -231,8 +235,8 @@ func to_transaction(slot_index : int, inventory : Inventory, amount : int):
 	if is_transaction_active():
 		return
 	var slot = inventory.slots[slot_index]
-	var item = slot.item.duplicate()
-	if not slot.has_valid():
+	var item = slot.item
+	if item == null:
 		return
 	var amount_no_removed = inventory.remove_at(slot_index, item, amount)
 	_set_transaction_slot(item, amount - amount_no_removed)
@@ -243,12 +247,10 @@ func transaction_to_at(slot_index : int, inventory : Inventory, amount_to_move :
 	if not is_transaction_active():
 		return
 	var slot = inventory.slots[slot_index]
-	var item = SlotItem.new()
-	item.definition = transaction_slot.item.definition
-	item.properties = transaction_slot.item.properties.duplicate()
-	if not transaction_slot.has_valid():
+	var item = transaction_slot.item
+	if item == null:
 		return
-	if inventory.is_empty_slot(slot_index) or item.is_stack_with(slot.item):
+	if inventory.is_empty_slot(slot_index) or slot.item == item:
 		var amount = transaction_slot.amount
 		if amount_to_move >= 0:
 			amount = amount_to_move
@@ -257,16 +259,13 @@ func transaction_to_at(slot_index : int, inventory : Inventory, amount_to_move :
 	else:
 		# Different items in slot and other_slot
 		# Check if transaction_slot amount is equal of origin_slot amount
+		var new_amount = transaction_slot.amount
 		if slot is CategorizedSlot:
 			var c_slot = slot as CategorizedSlot
 			if not c_slot.is_accept_category(item):
 				return
-		var slot_item = SlotItem.new()
-		slot_item.definition = slot.item.definition
-		slot_item.properties = slot.item.properties.duplicate()
-		var new_amount = slot.amount
-		inventory.set_slot_content(slot_index, item.definition, item.properties, transaction_slot.amount)
-		_set_transaction_slot(slot_item, new_amount)
+		_set_transaction_slot(slot.item, inventory.slots[slot_index].amount)
+		inventory.set_slot(slot_index, item, new_amount)
 
 
 ## Moves transfer slot information to [Inventory].
@@ -282,7 +281,7 @@ func transaction_to(inventory : Inventory):
 
 ## Return [code]true[/code] if contains information in slot transaction.
 func is_transaction_active() -> bool:
-	return transaction_slot.has_valid()
+	return transaction_slot.item != null
 
 
 ## Drop [InventoryItem] from slot transaction.
@@ -292,19 +291,18 @@ func drop_transaction():
 	_set_transaction_slot(null, 0)
 
 
-func _instantiate_dropped_item(dropped_item : PackedScene, item : SlotItem):
+func _instantiate_dropped_item(dropped_item : PackedScene):
 	var obj = dropped_item.instantiate()
 	drop_parent.add_child(obj)
-	obj.item = item
 	obj.position = drop_parent_position.position
 	obj.rotation = drop_parent_position.rotation
 	dropped.emit(obj)
 
 
-func _set_transaction_slot(item : SlotItem, amount : int):
+func _set_transaction_slot(item : InventoryItem, amount : int):
 	transaction_slot.amount = amount
 	if amount > 0:
 		transaction_slot.item = item
 	else:
 		transaction_slot.item = null
-	updated_transaction_slot.emit()
+	updated_transaction_slot.emit(transaction_slot.item, transaction_slot.amount)

@@ -17,15 +17,8 @@ class_name InventoryItem
 
 @export var id := 0
 
-@export var can_stack := true
-
 ## Maximum amount of this item within an [Inventory] slot
-@export var max_stack := 0:
-	get:
-		if can_stack:
-			return max_stack
-		else:
-			return 1
+@export var max_stack := 0
 
 ## Name of item
 @export var name : String
@@ -38,10 +31,6 @@ class_name InventoryItem
 
 ## Item custom properties
 @export var properties : Dictionary
-
-## TODO Use this on craft finish with as option
-## Custom Properties that are instantiated in the [SlotItem] to be used dynamically. Example: current durability
-@export var dynamic_properties : Array[String]
 
 ## Item Categories (Use Bit Flags)
 @export var categories : Array[ItemCategory]

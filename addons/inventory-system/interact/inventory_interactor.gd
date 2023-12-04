@@ -9,8 +9,6 @@ signal interacted(object : Node)
 
 @export_node_path("InventoryHandler") var inventory_handler_path := NodePath("../InventoryHandler")
 @onready var inventory_handler : InventoryHandler = get_node(inventory_handler_path)
-@export_node_path("InventoryHandler") var crafter_path := NodePath("../Crafter")
-@onready var crafter : Crafter = get_node(crafter_path)
 @export_node_path("Hotbar") var hotbar_path := NodePath("../Hotbar")
 @onready var hotbar : Hotbar = get_node(hotbar_path)
 @export var raycast : RayCast3D
@@ -22,10 +20,6 @@ var actual_hand_object : Node
 
 ## 🫴 Interact System
 func try_interact():
-	
-	if inventory_handler.is_open_any_inventory() or crafter.is_open_any_station():
-		return
-		
 	var object = raycast.get_collider()
 	last_interact_object = object
 	var pos : Vector2 = Vector2.ZERO
@@ -52,8 +46,6 @@ func try_interact():
 
 
 func get_actions(node : Node) -> Array[InteractAction]:
-	if inventory_handler.is_open_any_inventory() or crafter.is_open_any_station():
-		return []
 	var actions : Array[InteractAction] = []
 	if node != null and node.has_method("get_actions"):
 		actions = node.get_actions(self)
@@ -61,8 +53,6 @@ func get_actions(node : Node) -> Array[InteractAction]:
 
 
 func get_hand_actions(node : Node) -> Array[InteractAction]:
-	if inventory_handler.is_open_any_inventory() or crafter.is_open_any_station():
-		return []
 	var actions : Array[InteractAction] = []
 	if node != null and node.has_method("get_actions"):
 		actions = node.get_actions(self)
