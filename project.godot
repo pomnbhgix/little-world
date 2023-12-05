@@ -19,10 +19,12 @@ config/icon="res://arts/icon.svg"
 
 Editor="*res://packages/utils/editor.gd"
 InventorySystem="*res://addons/inventory-system/core/inventory_system.tscn"
+BeehaveGlobalMetrics="*res://addons/beehave/metrics/beehave_global_metrics.gd"
+BeehaveGlobalDebugger="*res://addons/beehave/debug/global_debugger.gd"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/inventory-system/plugin.cfg")
+enabled=PackedStringArray("res://addons/beehave/plugin.cfg", "res://addons/inventory-system/plugin.cfg")
 
 [input]
 
