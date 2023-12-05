@@ -1,0 +1,14 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://c2ftm3y4mvkiw"]
+
+[ext_resource type="Shader" path="res://packages/shaders/toon/toon_double.gdshader" id="1_c7qnh"]
+[ext_resource type="Texture2D" uid="uid://cktpwqrwwleqb" path="res://arts/UnityChan/Textures/body_01.tga" id="2_61nob"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_c7qnh")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/specular = Color(0.301961, 0.301961, 0.301961, 0.501961)
+shader_parameter/fresnel = Color(0.2, 0.2, 0.2, 0.3)
+shader_parameter/base_texture = ExtResource("2_61nob")
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)

@@ -223,3 +223,14 @@ toggle_craft_panel={
 [rendering]
 
 renderer/rendering_method="mobile"
+
+[shader_globals]
+
+specular_smoothness={
+"type": "float",
+"value": 0.05
+}
+fresnel_smoothness={
+"type": "float",
+"value": 0.05
+}

@@ -1,0 +1,18 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://nlkj603lladc"]
+
+[ext_resource type="Texture2D" uid="uid://cef2up5k3voqg" path="res://arts/UnityChan/Textures/face_00.tga" id="1_okb4t"]
+[ext_resource type="Shader" path="res://packages/shaders/toon/toon_face.gdshader" id="1_ykvlk"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_ykvlk")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/shade_step = 0.179
+shader_parameter/shade_feather = 0.2201
+shader_parameter/face_shade_step = 0.01
+shader_parameter/face_shade_feather = 0.5601
+shader_parameter/specular = Color(0.3, 0.3, 0.3, 0.5)
+shader_parameter/fresnel = Color(0.2, 0.2, 0.2, 0.3)
+shader_parameter/base_texture = ExtResource("1_okb4t")
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
