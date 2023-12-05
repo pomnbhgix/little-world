@@ -1,9 +1,16 @@
-[gd_scene load_steps=7 format=3 uid="uid://11ycywam225t"]
+[gd_scene load_steps=9 format=3 uid="uid://11ycywam225t"]
 
 [ext_resource type="Script" path="res://addons/inventory-system/core/dropped_item_3d.gd" id="1_ja8tm"]
 [ext_resource type="Resource" uid="uid://bo4qxoaq53opy" path="res://packages/inventory/items/wood.tres" id="2_b6gnk"]
 [ext_resource type="PackedScene" uid="uid://b18a4e60iwuov" path="res://arts/lowpoly_nature_pack/Branch_01.fbx" id="2_d531t"]
+[ext_resource type="Script" path="res://addons/inventory-system/interact/interact_action.gd" id="3_0clqd"]
 [ext_resource type="Texture2D" uid="uid://d0v3d4wtrko4i" path="res://arts/lowpoly_nature_pack/NaturePackLite_Texture_01.png" id="3_qhiuo"]
+
+[sub_resource type="Resource" id="Resource_ubrxu"]
+script = ExtResource("3_0clqd")
+input = "interact"
+description = "to Interact"
+code = 0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_spm0c"]
 size = Vector3(0.836914, 0.134766, 0.161682)
@@ -14,6 +21,7 @@ albedo_texture = ExtResource("3_qhiuo")
 [node name="Wood" type="RigidBody3D"]
 script = ExtResource("1_ja8tm")
 item = ExtResource("2_b6gnk")
+actions = Array[ExtResource("3_0clqd")]([SubResource("Resource_ubrxu")])
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00341797, 0.0615234, 0.00204468)
