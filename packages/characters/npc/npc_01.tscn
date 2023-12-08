@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://ds8cktljjn68k"]
 
-[ext_resource type="PackedScene" uid="uid://du35w2njsu4rn" path="res://arts/UnityChan/unitychan.fbx" id="1_uc14l"]
+[ext_resource type="PackedScene" uid="uid://ccg3bj40cs7o1" path="res://arts/UnityChan/unitychan.tscn" id="1_uc14l"]
 [ext_resource type="Material" uid="uid://b4qbr7vmbd1iu" path="res://packages/characters/npc/materials/unitychan_hair.tres" id="2_denk5"]
 [ext_resource type="Material" uid="uid://nlkj603lladc" path="res://packages/characters/npc/materials/unitychan_face.tres" id="2_e3rsb"]
 [ext_resource type="Shader" path="res://packages/shaders/toon/toon.gdshader" id="2_s2ocd"]
@@ -33,34 +33,34 @@ shape = SubResource("CylinderShape3D_prsnq")
 [node name="Root Scene" parent="Models" instance=ExtResource("1_uc14l")]
 
 [node name="head_back" parent="Models/Root Scene/RootNode/Character1_Reference/GeneralSkeleton" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.21614e-07, -3.33786e-06, -3.1013e-07)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.21614e-07, 1.54972e-06, -2.82191e-07)
 
 [node name="eye_base_old" parent="Models/Root Scene/RootNode/Character1_Reference/GeneralSkeleton" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.21614e-07, -3.33786e-06, -3.1013e-07)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.21614e-07, 1.54972e-06, -2.82191e-07)
 
 [node name="eye_L_old" parent="Models/Root Scene/RootNode/Character1_Reference/GeneralSkeleton" index="2"]
-transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, -8.21614e-07, -3.33786e-06, -3.1013e-07)
+transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, -8.21614e-07, 1.54972e-06, -2.82191e-07)
 
 [node name="eye_R_old" parent="Models/Root Scene/RootNode/Character1_Reference/GeneralSkeleton" index="3"]
-transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, -8.21614e-07, -3.33786e-06, -3.1013e-07)
+transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, -8.21614e-07, 1.54972e-06, -2.82191e-07)
 
 [node name="MTH_DEF" parent="Models/Root Scene/RootNode/Character1_Reference/GeneralSkeleton" index="4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.42038e-08, -1.90735e-06, -9.03383e-08)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.42038e-08, 1.54972e-06, -8.19564e-08)
 
 [node name="MTH_DEF" parent="Models/Root Scene/RootNode/Character1_Reference/GeneralSkeleton/MTH_DEF" index="0"]
 surface_material_override/0 = ExtResource("2_e3rsb")
 
 [node name="EYE_DEF" parent="Models/Root Scene/RootNode/Character1_Reference/GeneralSkeleton" index="5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.42038e-08, -1.90735e-06, -9.03383e-08)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.42038e-08, 1.54972e-06, -8.19564e-08)
 
 [node name="EYE_DEF" parent="Models/Root Scene/RootNode/Character1_Reference/GeneralSkeleton/EYE_DEF" index="0"]
 surface_material_override/0 = ExtResource("2_e3rsb")
 
 [node name="EL_DEF" parent="Models/Root Scene/RootNode/Character1_Reference/GeneralSkeleton" index="6"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.42038e-08, -1.90735e-06, -9.03383e-08)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.42038e-08, 1.54972e-06, -8.19564e-08)
 
 [node name="BLW_DEF" parent="Models/Root Scene/RootNode/Character1_Reference/GeneralSkeleton" index="7"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.42038e-08, -1.90735e-06, -9.03383e-08)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.42038e-08, 1.54972e-06, -8.19564e-08)
 
 [node name="tail" parent="Models/Root Scene/RootNode/Character1_Reference/GeneralSkeleton" index="8"]
 surface_material_override/0 = ExtResource("2_denk5")

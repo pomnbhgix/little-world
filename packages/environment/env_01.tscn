@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://blguan87ifqle"]
 
-[ext_resource type="PackedScene" uid="uid://buy1fubvg3xkb" path="res://arts/LowPoly Environment Pack/Mounting_1.fbx" id="1_rpcai"]
+[ext_resource type="PackedScene" uid="uid://buy1fubvg3xkb" path="res://arts/LowPoly Environment Pack/models/Mounting_1.fbx" id="1_rpcai"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_kt6be"]
 size = Vector2(50, 50)

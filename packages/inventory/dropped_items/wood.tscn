@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://addons/inventory-system/core/dropped_item_3d.gd" id="1_ja8tm"]
 [ext_resource type="Resource" uid="uid://bo4qxoaq53opy" path="res://packages/inventory/items/wood.tres" id="2_b6gnk"]
-[ext_resource type="PackedScene" uid="uid://b18a4e60iwuov" path="res://arts/lowpoly_nature_pack/Branch_01.fbx" id="2_d531t"]
+[ext_resource type="PackedScene" uid="uid://b18a4e60iwuov" path="res://arts/lowpoly_nature_pack/models/Branch_01.fbx" id="2_d531t"]
 [ext_resource type="Script" path="res://addons/inventory-system/interact/interact_action.gd" id="3_0clqd"]
 [ext_resource type="Texture2D" uid="uid://d0v3d4wtrko4i" path="res://arts/lowpoly_nature_pack/NaturePackLite_Texture_01.png" id="3_qhiuo"]
 
