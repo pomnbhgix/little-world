@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b4c0op8572shu"]
+
+[ext_resource type="Script" path="res://tests/icospere.gd" id="1_r0g5g"]
+
+[node name="ProcedualMeshTest" type="Node"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+script = ExtResource("1_r0g5g")

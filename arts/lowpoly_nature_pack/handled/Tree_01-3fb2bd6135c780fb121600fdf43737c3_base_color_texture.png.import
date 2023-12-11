@@ -3,9 +3,9 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://wgh7nhs0ufnq"
-path.s3tc="res://.godot/imported/Tree_01-3fb2bd6135c780fb121600fdf43737c3_base_color_texture.png-415a4de1d40e693fadb45545ebcb5c49.s3tc.ctex"
+path.etc2="res://.godot/imported/Tree_01-3fb2bd6135c780fb121600fdf43737c3_base_color_texture.png-415a4de1d40e693fadb45545ebcb5c49.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={}
@@ -13,7 +13,7 @@ generator_parameters={}
 [deps]
 
 source_file="res://arts/lowpoly_nature_pack/handled/Tree_01-3fb2bd6135c780fb121600fdf43737c3_base_color_texture.png"
-dest_files=["res://.godot/imported/Tree_01-3fb2bd6135c780fb121600fdf43737c3_base_color_texture.png-415a4de1d40e693fadb45545ebcb5c49.s3tc.ctex"]
+dest_files=["res://.godot/imported/Tree_01-3fb2bd6135c780fb121600fdf43737c3_base_color_texture.png-415a4de1d40e693fadb45545ebcb5c49.etc2.ctex"]
 
 [params]
 
