@@ -1,0 +1,14 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://bg6ycx3blefwu"]
+
+[ext_resource type="Shader" path="res://packages/shaders/toon/toon.gdshader" id="1_gkdij"]
+[ext_resource type="Texture2D" uid="uid://dltcgku07wvdy" path="res://arts/UnityChan/Textures/eyeline_00.tga" id="2_guomi"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_gkdij")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/specular = Color(0.3, 0.3, 0.3, 0.5)
+shader_parameter/fresnel = Color(0.2, 0.2, 0.2, 0.3)
+shader_parameter/base_texture = ExtResource("2_guomi")
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
