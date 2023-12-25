@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4c0op8572shu"]
+
+[ext_resource type="Script" path="res://packages/procedual_mesh/test/triangle_test.gd" id="1_rrfot"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_84d5y"]
+_surfaces = [{
+"aabb": AABB(0, 0, -1, 1, 1e-05, 1.00001),
+"attribute_data": PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 191, 0, 0, 0, 0, 0, 0, 0, 0),
+"format": 34359742487,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 2, 0, 1, 0, 1, 0, 2, 0, 3, 0),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 128, 191, 255, 127, 255, 255, 0, 0, 0, 128, 255, 127, 255, 255, 0, 0, 0, 128, 255, 127, 255, 255, 0, 0, 0, 128, 255, 127, 255, 255, 0, 0, 0, 128)
+}]
+
+[node name="ProcedualMeshTest" type="Node"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.159183, -0.857113, 0.489916, 0.264863, 0.515128, 0.815163, -0.951057, 1.25554e-07, 0.309017, 0, 0, 0)
+shadow_enabled = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("ArrayMesh_84d5y")
+script = ExtResource("1_rrfot")
+update = false

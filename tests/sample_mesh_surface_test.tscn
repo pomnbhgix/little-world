@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://d4l35ew3oue1t"]
+
+[ext_resource type="Script" path="res://tests/spawner.gd" id="1_7h5kb"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_0c32i"]
+size = Vector2(100, 100)
+
+[node name="SampleMeshSurfaceTest" type="Node"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_0c32i")
+
+[node name="Node3D" type="Node3D" parent="." node_paths=PackedStringArray("mesh")]
+script = ExtResource("1_7h5kb")
+mesh = NodePath("../MeshInstance3D")
+update = false
+distribute_density = 0.064

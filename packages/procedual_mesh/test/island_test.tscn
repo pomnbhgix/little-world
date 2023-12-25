@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://cyw436mc5jnq4"]
+
+[ext_resource type="Script" path="res://packages/procedual_mesh/islandaaa.gd" id="1_g3f2e"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_semyt"]
+vertex_color_use_as_albedo = true
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_q2mda"]
+_surfaces = [{
+"aabb": AABB(-0.5, 0, -0.5, 1, 1e-05, 1),
+"attribute_data": PackedByteArray(0, 0, 0, 0, 0, 0, 0, 128, 0, 0, 128, 63, 0, 0, 0, 128, 0, 0, 0, 0, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 128, 191),
+"format": 34359742487,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 2, 0, 1, 0, 1, 0, 2, 0, 3, 0),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 0, 191, 0, 0, 0, 0, 0, 0, 0, 191, 0, 0, 0, 63, 0, 0, 0, 0, 0, 0, 0, 191, 0, 0, 0, 191, 0, 0, 0, 0, 0, 0, 0, 63, 0, 0, 0, 63, 0, 0, 0, 0, 0, 0, 0, 63, 255, 127, 255, 255, 0, 0, 0, 128, 255, 127, 255, 255, 0, 0, 0, 128, 255, 127, 255, 255, 0, 0, 0, 128, 255, 127, 255, 255, 0, 0, 0, 128)
+}]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_mhasu"]
+noise_type = 3
+frequency = 0.0127
+
+[sub_resource type="Curve" id="Curve_vynho"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="IslandTest" type="Node"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_semyt")
+mesh = SubResource("ArrayMesh_q2mda")
+script = ExtResource("1_g3f2e")
+update = false
+noise = SubResource("FastNoiseLite_mhasu")
+height_multiplier = 20.0
+curve = SubResource("Curve_vynho")
+max_height = 0.0

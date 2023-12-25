@@ -1,11 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://40nl6arpjjcy"]
+[gd_scene load_steps=6 format=3 uid="uid://40nl6arpjjcy"]
 
-[ext_resource type="Texture2D" uid="uid://mkuemjh0svnl" path="res://arts/lowpoly_nature_pack/handled/Branch_01-de9a71d3437f2844d5ed074265f86d54_base_color_texture.png" id="1_aioum"]
+[ext_resource type="Material" uid="uid://b8haiixfhu8mi" path="res://arts/lowpoly_nature_pack/handled/common_material.tres" id="2_uoxs8"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7ynd7"]
+load_path = "res://.godot/imported/Branch_01-de9a71d3437f2844d5ed074265f86d54_base_color_texture.png-d21b2101b4ce4a72f45eeb4d36b07f5e.s3tc.ctex"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4tj3t"]
 resource_name = "Nature_Mat_01"
-albedo_color = Color(1, 1, 1, 1)
-albedo_texture = ExtResource("1_aioum")
+albedo_texture = SubResource("CompressedTexture2D_7ynd7")
 metallic = 0.4
 roughness = 0.272166
 
@@ -49,3 +51,4 @@ shadow_mesh = SubResource("ArrayMesh_i3g15")
 transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0.556773, 0.0352015, 3.26624)
 mesh = SubResource("ArrayMesh_pi1o4")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_uoxs8")

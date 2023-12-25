@@ -2,9 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://blguan87ifqle" path="res://packages/environment/env_01.tscn" id="1_rvwrk"]
 [ext_resource type="PackedScene" uid="uid://7b00mkmg5q4r" path="res://packages/environment/light_and_sky.tscn" id="2_vvdtx"]
-[ext_resource type="PackedScene" uid="uid://c5t77cc7gnksi" path="res://packages/characters/first_person_player.tscn" id="4_dauui"]
+[ext_resource type="PackedScene" uid="uid://c5t77cc7gnksi" path="res://packages/characters/players/first_person_player.tscn" id="4_dauui"]
 [ext_resource type="PackedScene" uid="uid://da2b73383isem" path="res://addons/inventory-system/ui/inventory_system_ui.tscn" id="6_rp0sg"]
-[ext_resource type="PackedScene" uid="uid://bnqcu8683ybk2" path="res://packages/interact/Tree_01.tscn" id="7_ccf5u"]
+[ext_resource type="PackedScene" path="res://packages/interact/Tree_01.tscn" id="7_ccf5u"]
 
 [node name="HideAndSeek" type="Node"]
 
