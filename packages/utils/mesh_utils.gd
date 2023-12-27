@@ -4,6 +4,14 @@ class_name MeshUtils;
 
 static var rng = RandomNumberGenerator.new() 
 
+static func create_positions_on_sphere(position_num:int):
+	var positions:Array[Vector3] = []
+	
+	for i in position_num:
+		positions.append(random_on_unit_sphere())
+		
+	return positions;
+
 static func random_on_unit_sphere() -> Vector3:
 	var x1 = randf_range (-1, 1)
 	var x2 = randf_range (-1, 1)

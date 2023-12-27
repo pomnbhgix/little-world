@@ -1,0 +1,55 @@
+[gd_scene load_steps=10 format=3 uid="uid://bart7cqltcnht"]
+
+[ext_resource type="Script" path="res://addons/inventory-system/extras/character_inventory_system.gd" id="1_w4q1h"]
+[ext_resource type="Resource" uid="uid://bebhg07krf53f" path="res://packages/inventory/database.tres" id="2_4jxel"]
+[ext_resource type="Script" path="res://addons/inventory-system/core/inventory_handler.gd" id="3_8806v"]
+[ext_resource type="Script" path="res://addons/inventory-system/core/inventory.gd" id="4_o6g1u"]
+[ext_resource type="Script" path="res://addons/inventory-system/core/hotbar.gd" id="5_n7q45"]
+[ext_resource type="Script" path="res://addons/inventory-system/craft/crafter.gd" id="6_c6x1t"]
+[ext_resource type="Script" path="res://addons/inventory-system/craft/craft_station.gd" id="7_0wyu4"]
+[ext_resource type="Script" path="res://addons/inventory-system/interact/inventory_interactor.gd" id="8_orxga"]
+[ext_resource type="Script" path="res://addons/inventory-system/extras/object_placer.gd" id="9_rmnmi"]
+
+[node name="CharacterInventorySystem" type="Node"]
+script = ExtResource("1_w4q1h")
+database = ExtResource("2_4jxel")
+
+[node name="InventoryHandler" type="Node" parent="." node_paths=PackedStringArray("inventories")]
+script = ExtResource("3_8806v")
+inventories = [NodePath("Inventory")]
+database = ExtResource("2_4jxel")
+
+[node name="Inventory" type="Node" parent="InventoryHandler"]
+script = ExtResource("4_o6g1u")
+database = ExtResource("2_4jxel")
+
+[node name="Hotbar" type="Node" parent="." node_paths=PackedStringArray("inventory")]
+script = ExtResource("5_n7q45")
+inventory = NodePath("../InventoryHandler/Inventory")
+database = ExtResource("2_4jxel")
+
+[node name="Crafter" type="Node" parent="."]
+script = ExtResource("6_c6x1t")
+database = ExtResource("2_4jxel")
+
+[node name="CraftStation" type="Node" parent="Crafter"]
+script = ExtResource("7_0wyu4")
+database = ExtResource("2_4jxel")
+
+[node name="InventoryInteractor" type="Node" parent="."]
+script = ExtResource("8_orxga")
+database = ExtResource("2_4jxel")
+
+[node name="ObjectPlacer" type="Node" parent="InventoryInteractor"]
+script = ExtResource("9_rmnmi")
+database = ExtResource("2_4jxel")
+
+[node name="PickupAudio" type="AudioStreamPlayer3D" parent="."]
+
+[node name="DropAudio" type="AudioStreamPlayer3D" parent="."]
+
+[node name="HotbarChangeAudio" type="AudioStreamPlayer3D" parent="."]
+
+[node name="PlayerInventoryOpenAudio" type="AudioStreamPlayer3D" parent="."]
+
+[node name="PlayerInventoryCloseAudio" type="AudioStreamPlayer3D" parent="."]

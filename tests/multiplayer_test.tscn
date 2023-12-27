@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://db4vvu4vomkh5"]
-
-[ext_resource type="Script" path="res://tests/kdtree.gd" id="1_wmsge"]
-
-[node name="MultiplayerTest" type="Node"]
-
-[node name="Node" type="Node" parent="."]
-script = ExtResource("1_wmsge")

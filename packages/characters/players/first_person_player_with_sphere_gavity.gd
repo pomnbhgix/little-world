@@ -1,8 +1,7 @@
 extends CharacterBody3D
 
-@onready var planet = $"../StaticBody3D"
-@onready var debuger = $"../Debuger"
-
+@export var planet:Node3D;
+@export var debuger:Node;
 # input
 var motion := Vector2()
 var sprint = false
@@ -73,26 +72,59 @@ func rotate_camera(move):
 
 var first = true;
 
+func get_planet_position():
+	if planet:
+		return planet.global_transform.origin
+	else:
+		return Vector3.ZERO
+
+func locomotionv2(_delta):
+	
+	var right = camera.global_transform.basis.x
+	var forward = Vector3.UP.cross(right)
+	
+	var direction = forward * motion.x + right * motion.y
+
+	velocity = direction.normalized() *5
+	#if not is_on_floor():
+		#velocity -= gravity_direction * delta
+	self.global_transform.origin += direction.normalized() * 0.1
+	debuger.draw_line([self.global_transform.origin,self.global_transform.origin + velocity.normalized() * 10.0])
+	print_debug((self.global_transform.origin-get_planet_position()).length())
+	#set_velocity(velocity)
+	#move_and_slide()
+
 func locomotionv1(delta):
 
-	var gravity_direction = (self.global_transform.origin - planet.global_transform.origin).normalized()
-	up_direction = gravity_direction
+	#var gravity_direction = (self.global_transform.origin - get_planet_position()).normalized()
 
-	self.basis = Utils.custom_quaternion(Vector3.UP,gravity_direction)
+	var gravity_direction = -(get_planet_position() - self.global_transform.origin).normalized()
 
+	set_up_direction(gravity_direction)
+	
+	self.global_transform.basis.y = gravity_direction
+	self.global_transform.basis.x = -self.global_transform.basis.z.cross(gravity_direction)
+	self.global_transform.basis = self.global_transform.basis.orthonormalized()
+	
 	var right = camera.global_transform.basis.x
 	var forward = gravity_direction.cross(right)
-
-	debuger.draw_line([self.global_transform.origin,self.global_transform.origin + forward*100.0])
 	
-	var direction = forward * -motion.x + right * motion.y
+	var direction = forward * motion.x + right * motion.y
 
-	velocity = direction.normalized() * 5
-	#velocity -= gravity_direction * 0.01
-
-	#self.global_transform.origin = self.global_transform.origin + direction.normalized() * 1
-
-	#move_and_slide()
+	debuger.draw_line([self.global_transform.origin,self.global_transform.origin + direction.normalized() * 10.0])
+	
+	velocity = direction.normalized() * 1
+	velocity -= gravity_direction * delta
+	
+	#self.global_transform.origin += direction.normalized() * 0.1
+	
+	#if not is_on_floor():
+		
+	#print_debug(is_on_floor())
+	
+	
+	move_and_slide()
+	#set_velocity(velocity)
 
 	# var dot = Vector3.UP.dot(gravity_direction)
 

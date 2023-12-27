@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://d1b0tf3ancf27"]
+
+[ext_resource type="Shader" path="res://packages/waters/water_01.gdshader" id="1_sut7r"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_4imdh"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3mx3g"]
+render_priority = 0
+shader = ExtResource("1_sut7r")
+shader_parameter/WATER_COL = Color(0.04, 0.38, 0.88, 1)
+shader_parameter/WATER2_COL = Color(0.04, 0.35, 0.78, 1)
+shader_parameter/FOAM_COL = Color(0.8125, 0.9609, 0.9648, 1)
+shader_parameter/distortion_speed = 2.0
+shader_parameter/tile = Vector2(5, 5)
+shader_parameter/height = 2.0
+shader_parameter/wave_size = Vector2(2, 2)
+shader_parameter/wave_speed = 1.5
+
+[node name="Water01" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_4imdh")
+surface_material_override/0 = SubResource("ShaderMaterial_3mx3g")

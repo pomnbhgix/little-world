@@ -6,10 +6,6 @@ extends MeshInstance3D
 
 @export var resolution:int = 10;
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -113,8 +109,6 @@ func procedual_mesh():
 				pos = lerp(columnTopStart, columnTopEnd, float(v) / resolution - 1.0);
 			
 			verts[vi] = pos.normalized();
-			
-			print_debug(ti)
 			
 			indices.set(ti * 3,quad.x);
 			indices.set(ti * 3 + 1,quad.y);
