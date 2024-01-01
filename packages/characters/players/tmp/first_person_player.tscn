@@ -1,7 +1,7 @@
 [gd_scene load_steps=18 format=3 uid="uid://c5t77cc7gnksi"]
 
 [ext_resource type="Script" path="res://addons/inventory-system/extras/character_inventory_system.gd" id="1_1w5pe"]
-[ext_resource type="Script" path="res://packages/characters/players/first_person_player.gd" id="1_27up0"]
+[ext_resource type="Script" path="res://packages/characters/players/tmp/first_person_player.gd" id="1_27up0"]
 [ext_resource type="Resource" uid="uid://bebhg07krf53f" path="res://packages/inventory/database.tres" id="2_pf422"]
 [ext_resource type="Script" path="res://addons/inventory-system/core/inventory_handler.gd" id="3_00tsc"]
 [ext_resource type="Script" path="res://addons/inventory-system/core/inventory.gd" id="4_wvuf0"]
@@ -55,7 +55,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
 shape = SubResource("CylinderShape3D_xuxwo")
 
 [node name="Models" type="Node3D" parent="."]
-visible = false
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Models"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)

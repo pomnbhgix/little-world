@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cdwjaady1cqt0"]
 
-[ext_resource type="Script" path="res://packages/characters/players/first_person_player_with_sphere_gavity.gd" id="1_t4b7x"]
+[ext_resource type="Script" path="res://packages/characters/players/tmp/first_person_player_with_sphere_gavity.gd" id="1_t4b7x"]
 [ext_resource type="PackedScene" uid="uid://bart7cqltcnht" path="res://packages/inventory/character_inventory_system.tscn" id="2_askfh"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_1w643"]
