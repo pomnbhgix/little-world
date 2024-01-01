@@ -113,9 +113,13 @@ func locomotionv1(delta):
 
 	debuger.draw_line([self.global_transform.origin,self.global_transform.origin + direction.normalized() * 10.0])
 	
-	velocity = direction.normalized() * 1
-	velocity -= gravity_direction * delta
-	
+	velocity = direction.normalized() * 5
+
+	if not is_on_floor():
+		velocity -= gravity_direction * delta
+		
+	move_and_slide()
+
 	#self.global_transform.origin += direction.normalized() * 0.1
 	
 	#if not is_on_floor():
@@ -123,7 +127,6 @@ func locomotionv1(delta):
 	#print_debug(is_on_floor())
 	
 	
-	move_and_slide()
 	#set_velocity(velocity)
 
 	# var dot = Vector3.UP.dot(gravity_direction)
