@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://djy6fpifcisvp"]
+
+[ext_resource type="Shader" path="res://packages/waters/water_plane_01.gdshader" id="1_lgy65"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_m1igx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ee6to"]
+render_priority = 0
+shader = ExtResource("1_lgy65")
+shader_parameter/out_color = null
+
+[node name="Node3D" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_m1igx")
+surface_material_override/0 = SubResource("ShaderMaterial_ee6to")
