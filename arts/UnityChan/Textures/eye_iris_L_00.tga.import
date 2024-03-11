@@ -3,16 +3,16 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dpd3mu76a4icn"
-path.etc2="res://.godot/imported/eye_iris_L_00.tga-a5641a5bd67b4ee903e5ebad87fab786.etc2.ctex"
+path.s3tc="res://.godot/imported/eye_iris_L_00.tga-a5641a5bd67b4ee903e5ebad87fab786.s3tc.ctex"
 metadata={
-"imported_formats": ["etc2_astc"],
+"imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://arts/UnityChan/Textures/eye_iris_L_00.tga"
-dest_files=["res://.godot/imported/eye_iris_L_00.tga-a5641a5bd67b4ee903e5ebad87fab786.etc2.ctex"]
+dest_files=["res://.godot/imported/eye_iris_L_00.tga-a5641a5bd67b4ee903e5ebad87fab786.s3tc.ctex"]
 
 [params]
 

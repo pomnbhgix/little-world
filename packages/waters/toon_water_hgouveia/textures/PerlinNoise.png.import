@@ -2,18 +2,17 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bug7n3wuxydx0"
-path.s3tc="res://.godot/imported/Rock_02-5db262cdf2102cd5cee0ab9526f3e330_base_color_texture.png-fdbd8ae40492e2ec92691995a32f1768.s3tc.ctex"
+uid="uid://hvhsoytks31n"
+path.s3tc="res://.godot/imported/PerlinNoise.png-f5a6d9048af27d731f11e412fa21d93e.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={}
 
 [deps]
 
-source_file="res://arts/lowpoly_nature_pack/models/Rock_02-5db262cdf2102cd5cee0ab9526f3e330_base_color_texture.png"
-dest_files=["res://.godot/imported/Rock_02-5db262cdf2102cd5cee0ab9526f3e330_base_color_texture.png-fdbd8ae40492e2ec92691995a32f1768.s3tc.ctex"]
+source_file="res://packages/waters/toon_water_hgouveia/textures/PerlinNoise.png"
+dest_files=["res://.godot/imported/PerlinNoise.png-f5a6d9048af27d731f11e412fa21d93e.s3tc.ctex"]
 
 [params]
 

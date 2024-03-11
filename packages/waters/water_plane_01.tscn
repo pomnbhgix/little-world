@@ -1,13 +1,32 @@
-[gd_scene load_steps=4 format=3 uid="uid://djy6fpifcisvp"]
+[gd_scene load_steps=6 format=3 uid="uid://djy6fpifcisvp"]
 
-[ext_resource type="Shader" path="res://packages/waters/water_plane_01.gdshader" id="1_lgy65"]
+[ext_resource type="Shader" path="res://packages/waters/toon_water_hgouveia/toon_water_hgouveia.gdshader" id="1_gltc6"]
+[ext_resource type="Texture2D" uid="uid://bf3cpobigic5o" path="res://packages/waters/toon_water_hgouveia/textures/WaterDistortion.png" id="2_qpd7o"]
+[ext_resource type="Texture2D" uid="uid://hvhsoytks31n" path="res://packages/waters/toon_water_hgouveia/textures/PerlinNoise.png" id="3_4llvp"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_m1igx"]
+size = Vector2(50, 50)
+subdivide_width = 20
+subdivide_depth = 20
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ee6to"]
 render_priority = 0
-shader = ExtResource("1_lgy65")
-shader_parameter/out_color = null
+shader = ExtResource("1_gltc6")
+shader_parameter/beer_factor = 0.8
+shader_parameter/foam_distance = 0.01
+shader_parameter/foam_max_distance = 0.4
+shader_parameter/foam_min_distance = 0.04
+shader_parameter/foam_color = Color(1, 1, 1, 1)
+shader_parameter/surface_noise_tiling = Vector2(1, 4)
+shader_parameter/surface_noise_scroll = Vector3(0.03, 0.03, 0)
+shader_parameter/surface_noise_cutoff = 0.777
+shader_parameter/surface_distortion_amount = 0.27
+shader_parameter/_DepthGradientShallow = Color(0.325, 0.807, 0.971, 0.725)
+shader_parameter/_DepthGradientDeep = Color(0.086, 0.407, 1, 0.749)
+shader_parameter/_DepthMaxDistance = 1.0
+shader_parameter/_DepthFactor = 1.0
+shader_parameter/surfaceNoise = ExtResource("3_4llvp")
+shader_parameter/distortNoise = ExtResource("2_qpd7o")
 
 [node name="Node3D" type="Node3D"]
 

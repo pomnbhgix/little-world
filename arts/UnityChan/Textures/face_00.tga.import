@@ -3,16 +3,16 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cef2up5k3voqg"
-path.etc2="res://.godot/imported/face_00.tga-ff83ad62b8fa934c568e57265fe1a8fc.etc2.ctex"
+path.s3tc="res://.godot/imported/face_00.tga-ff83ad62b8fa934c568e57265fe1a8fc.s3tc.ctex"
 metadata={
-"imported_formats": ["etc2_astc"],
+"imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://arts/UnityChan/Textures/face_00.tga"
-dest_files=["res://.godot/imported/face_00.tga-ff83ad62b8fa934c568e57265fe1a8fc.etc2.ctex"]
+dest_files=["res://.godot/imported/face_00.tga-ff83ad62b8fa934c568e57265fe1a8fc.s3tc.ctex"]
 
 [params]
 
